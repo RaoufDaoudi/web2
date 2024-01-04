@@ -75,30 +75,17 @@ dropdown.addEventListener('click', () => {
 
 
 
-const value1 = document.getElementById("value1");
-const value2 = document.getElementById("value2");
-const value3 = document.getElementById("value3");
-const value4 = document.getElementById("value4");
-const value5 = document.getElementById("value5");
-const value6 = document.getElementById("value6");
-const value7 = document.getElementById("value7");
-const value8 = document.getElementById("value8");
-const value9 = document.getElementById("value9");
-const value10 = document.getElementById("value10");
 const predictButton = document.getElementById("button-predict");
 
-// Add event listener for predict button
 predictButton.addEventListener("click", function() {
-    // Get values entered by the user
-    const val1 = parseFloat(value1.value);
-    const val2 = parseFloat(value2.value);
-    const val3 = parseFloat(value3.value);
-    const val4 = parseFloat(value4.value);
-
-    // Create an array from the entered values
-    const valuesArray = [[val1, val2, val3, val4]];
-
-    // Create a data object to send to the API
+    var parameterValues = [];
+    for (let i = 1; i <= parameterCount; i++) {
+        let paramValue = document.getElementById('value' + i);
+        if (paramValue) {
+            parameterValues.push(parseFloat(paramValue.value));
+        }
+    }
+    const valuesArray = [parameterValues];
     const data = {
         toPred: valuesArray
     };
